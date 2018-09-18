@@ -1,0 +1,27 @@
+import org.gradle.internal.jvm.Jvm
+
+apply plugin: 'kotlin'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        google()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+repositories {
+    mavenCentral()
+    google()
+}
+
+dependencies {
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compileOnly "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    compileOnly 'com.google.auto.service:auto-service:1.0-rc2'
+    compileOnly 'com.squareup:javapoet:1.9.0'
+    compileOnly files(Jvm.current().getJre().homeDir.getAbsolutePath()+'/lib/rt.jar')
+}
